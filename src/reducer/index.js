@@ -1,4 +1,5 @@
 import {USER_INFO} from './../action/index'
+import _ from 'lodash';
 
 export default function (state={}, action){
     switch(action.type) {

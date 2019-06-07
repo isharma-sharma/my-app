@@ -1,18 +1,17 @@
 import React, {Component} from 'react';
-import {userdetails} from '../actions/index.js';
+import {userdetails} from './../action/index';
 import _ from 'lodash';
 import {connect} from 'react-redux';
 
-
 class Table extends Component {
     componentDidMount() {
-        this.props.userdetails()
+        this.props.userdetails();
+        console.log("this.props.userdetails()" + this.props.userdetails())
     }
     rendertabledetail(){
         return _.map(this.props.userdetails, detail => {
-           console.log(detail)
-
-            // <List>{(detail.name)}</List>
+           console.log("detail", detail.id)
+            //  <tbody>{detail}</tbody>
         })
     }
     render(){
@@ -27,9 +26,8 @@ class Table extends Component {
                 </tr>
             </thead>
             <tbody>
-            {
-                // this.state.allData.map((row: IRow) => <List key={row.id} row={row} editAction={this.loadEditForm} deleteAction={this.remove}  />)
-            }
+            {this.rendertabledetail()}
+            {console.log(this.rendertabledetail())}
             </tbody>
         </table>
 
@@ -42,6 +40,5 @@ function mapStateToProps(state){
         userdetails: state.userdetails
     }
   }
-  export default connect(mapStateToProps, 
+  export default connect(mapStateToProps,
     {userdetails})(Table)
-  
